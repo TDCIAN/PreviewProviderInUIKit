@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI // MARK: You should import SwiftUI to use Preview Provider
 
 class ViewController: UIViewController {
     
@@ -32,7 +33,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return 50
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,5 +68,22 @@ class TableViewCell: UITableViewCell {
     
     func configCell(index: Int) {
         label.text = "cell number: \(index)"
+    }
+}
+
+// Use PreviewProvider
+struct ViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        Container().edgesIgnoringSafeArea(.all)
+    }
+    
+    struct Container: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> UIViewController {
+            return ViewController()
+        }
+        
+        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+            
+        }
     }
 }
