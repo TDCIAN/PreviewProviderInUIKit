@@ -15,7 +15,10 @@ class ViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
+        tableView.register(
+            TableViewCell.self,
+            forCellReuseIdentifier: "TableViewCell"
+        )
         return tableView
     }()
 
@@ -37,8 +40,15 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "TableViewCell",
+            for: indexPath
+        ) as? TableViewCell else {
+            return UITableViewCell()
+        }
+        
         cell.configCell(index: indexPath.item)
+        
         return cell
     }
 }
